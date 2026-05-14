@@ -2,6 +2,8 @@
 
 An interactive AI-powered game that combines **Expert Systems**, **Machine Learning**, and a **Self-Learning Knowledge Base** to guess the animal you're thinking of.
 
+### 🎮 **[Play Live Here](https://guesstheanimal.netlify.app/)**
+
 > Built as a course project for **AI 405 – Intelligent Decision Support Systems**
 
 ---
