@@ -168,6 +168,23 @@ class SoundEffects {
     });
   }
 
+  /**
+   * Registers a one-time listener on the very first user interaction
+   * (click, keydown, or touch) so the background music starts
+   * automatically the moment the user touches anything on the page.
+   */
+  enableAutoplayOnFirstInteraction() {
+    const start = () => {
+      this.playBackground();
+      window.removeEventListener('click',    start);
+      window.removeEventListener('keydown',  start);
+      window.removeEventListener('touchstart', start);
+    };
+    window.addEventListener('click',     start, { once: true });
+    window.addEventListener('keydown',   start, { once: true });
+    window.addEventListener('touchstart', start, { once: true });
+  }
+
   stopBackground() {
     if (this.bgAudio) {
       this.bgAudio.pause();

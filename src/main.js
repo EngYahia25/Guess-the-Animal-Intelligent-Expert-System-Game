@@ -740,6 +740,7 @@ function initVoiceInput() {
 function init() {
   createParticles();
   initVoiceInput();
+  sfx.enableAutoplayOnFirstInteraction(); // Start bg music on first user interaction
   render();
 }
 
