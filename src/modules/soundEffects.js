@@ -183,6 +183,7 @@ class SoundEffects {
     }
     return this.enabled;
   }
+}
 
 const sfx = new SoundEffects();
 export default sfx;
