@@ -150,7 +150,39 @@ class SoundEffects {
       osc.stop(ctx.currentTime + i * 0.1 + 0.25);
     });
   }
-}
+
+  // ── Background Music ─────────────────────────────────
+  initBackgroundMusic() {
+    if (this.bgAudio) return;
+    this.bgAudio = new Audio('/background_music.mp3');
+    this.bgAudio.loop = true;
+    this.bgAudio.volume = 0.3; // 30% volume for background
+  }
+
+  playBackground() {
+    if (!this.enabled) return;
+    this.initBackgroundMusic();
+    this.bgAudio.play().catch(() => {
+      // Browsers often block auto-play until interaction
+      console.log('Background music autoplay blocked. Waiting for interaction.');
+    });
+  }
+
+  stopBackground() {
+    if (this.bgAudio) {
+      this.bgAudio.pause();
+    }
+  }
+
+  toggle() {
+    this.enabled = !this.enabled;
+    if (this.enabled) {
+      this.playBackground();
+    } else {
+      this.stopBackground();
+    }
+    return this.enabled;
+  }
 
 const sfx = new SoundEffects();
 export default sfx;

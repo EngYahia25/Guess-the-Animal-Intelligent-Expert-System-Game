@@ -162,6 +162,7 @@ function renderWelcome() {
   document.getElementById('btn-start').addEventListener('click', startGame);
   document.getElementById('btn-dashboard').addEventListener('click', () => {
     sfx.play('click');
+    sfx.playBackground(); // Ensure music plays on interaction
     state.screen = 'dashboard';
     render();
   });
@@ -175,6 +176,7 @@ function renderWelcome() {
 // ── Start Game ─────────────────────────────────────────
 function startGame() {
   sfx.play('start');
+  sfx.playBackground(); // Ensure music starts
   state.currentQuestion = state.engine.startGame();
   state.questionHistory = [];
   state.screen = 'question';
@@ -645,6 +647,11 @@ function renderDashboard() {
             </div>
           `).join('')}
         </div>
+      </div>
+
+      <div class="card" style="padding: 16px; width: 100%; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        <p>🎵 <strong>Background Music:</strong> "The Forest and the Trees" by Kevin MacLeod</p>
+        <p>Licensed under CC BY 4.0</p>
       </div>
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
